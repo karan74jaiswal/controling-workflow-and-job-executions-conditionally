@@ -90,3 +90,10 @@ jobs:
     steps:
       - name: Generating Report
         run: echo "THis is a Passing Report for the Workflow"
+
+  Generate_Linting_Report:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generating Report
+        run: echo "THis is a Linting Report for the Workflow"
