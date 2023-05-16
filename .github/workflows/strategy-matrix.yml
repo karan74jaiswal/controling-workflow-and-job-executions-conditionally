@@ -45,4 +45,4 @@ jobs:
           path: dist
 
   reusableWorkflow:
-    uses: "./reusable-workflow.yml"
+    uses: ./reusable-workflow.yml
