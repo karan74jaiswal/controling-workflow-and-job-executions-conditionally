@@ -1,8 +1,21 @@
 name: Reusable Workflow
-on: workflow_call
+on:
+  workflow_call:
+    inputs:
+      artifact_name:
+      description: This artifact is required to download from the parent job so that it can be processed here and passed the output to parent again
+      required: true
+      default: dist
 jobs:
   printing:
     runs-on: ubuntu-latest
     steps:
+      - name: Downloading The Artifacts
+        uses: actions/download-artifact@v2.1.1
+        with:
+          name: ${{inputs.artifact_name}}
+      - name: Printing the Artifacts Recieved from parent Workflow
+        run: ls
+
       - name: Printing the output
         run: echo "If This output is getting showed means a workflow is made reusable and used in this workflow"
