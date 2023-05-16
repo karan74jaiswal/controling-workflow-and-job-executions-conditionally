@@ -3,8 +3,8 @@ on:
   workflow_call:
     inputs:
       artifact-name:
-        description: This artifact is required to be downloaded and displayed on actions
-        required: false
+        description: There is no description
+        required: true
         default: dist
         type: string
 
@@ -12,13 +12,11 @@ jobs:
   printing:
     runs-on: ubuntu-latest
     steps:
-      - name: Downloading The Artifacts
+      - name: Downloading Artifacts
         uses: actions/download-artifact@v2.1.1
         with:
-          name: ${{ inputs.artifact-name }}
-
-      - name: Printing the Artifacts Recieved from parent Workflow
-        run: ls
-
+          name: ${{inputs.artifact-name}}
+      - name: Printing the artifacts we got from parent workflow
+        uses: ls
       - name: Printing the output
         run: echo "If This output is getting showed means a workflow is made reusable and used in this workflow"

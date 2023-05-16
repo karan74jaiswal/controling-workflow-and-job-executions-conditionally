@@ -44,7 +44,8 @@ jobs:
           name: build-files
           path: dist
 
-  reusableWorkflow:
+  # Calling a Reusable Workflow and Passing Artifacts as Inputs into it
+  Reusable_Workflow:
     needs: deployment
     uses: ./.github/workflows/reusable-workflow.yml
     with:
