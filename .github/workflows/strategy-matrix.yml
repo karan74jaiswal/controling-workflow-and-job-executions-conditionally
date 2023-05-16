@@ -1,5 +1,5 @@
 name: Strategy Matrix
-on: 
+on:
   push:
     branches:
       - main
@@ -11,7 +11,7 @@ jobs:
       matrix:
         runner: [ubuntu-latest, windows-latest, macos-latest]
         node_version: [12, 14, 16, 18]
-        include: 
+        include:
           - runner: ubuntu-latest
             node_version: 16
         exclude:
@@ -43,3 +43,6 @@ jobs:
         with:
           name: build-files
           path: dist
+
+  reusableWorkflow:
+    uses: "./reusable-workflow.yml"

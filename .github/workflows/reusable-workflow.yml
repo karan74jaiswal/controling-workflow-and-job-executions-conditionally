@@ -1,0 +1,8 @@
+name: Reusable Workflow
+on: workflow_call
+jobs:
+  printing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Printing the output
+        run: echo "If This output is getting showed means a workflow is made reusable and used in this workflow"
