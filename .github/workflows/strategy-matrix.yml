@@ -47,6 +47,6 @@ jobs:
   # Calling a Reusable Workflow and Passing Artifacts as Inputs into it
   ReusableWorkflow:
     needs: deployment
-    uses: ./.github/workflows/reusable-workflow.yml
+    uses: karan74jaiswal/controling-workflow-and-job-executions-conditionally/.github/workflows/reusable-workflow.yml
     with:
       artifact-name: build-files
