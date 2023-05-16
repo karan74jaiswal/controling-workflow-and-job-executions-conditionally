@@ -6,24 +6,26 @@ on:
 
 jobs:
   deployment:
-    # continue-on-error: true
-    # strategy:
-    #   matrix:
-    #     runner: [ubuntu-latest, windows-latest, macos-latest]
-    #     node_version: [12, 14, 16, 18]
-    # include:
-    #   - runner: ubuntu-latest
-    #     node_version: 16
-    # exclude:
-    #   - node_version: 12
-    #   - runner: macos-latest
+    continue-on-error: true
+    strategy:
+      matrix:
+        runner: [ubuntu-latest, windows-latest, macos-latest]
+        node_version: [12, 14, 16, 18]
+        include:
+          - runner: ubuntu-latest
+            node_version: 16
+        exclude:
+          - node_version: 12
+          - runner: macos-latest
 
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix.runner}}
     steps:
       - name: Get code
         uses: actions/checkout@v3
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.5.2
+        with:
+          node-version: ${{matrix.node_version}}
       - name: Cache dependencies
         id: cache
         uses: actions/cache@v3
@@ -42,9 +44,8 @@ jobs:
           name: build-files
           path: dist
 
-  # Calling a Reusable Workflow and Passing Artifacts as Inputs into it
   reusableWorkflow:
     needs: deployment
-    uses: ./.github/workflows/execution-flow.yml
+    uses: ./.github/workflows/reusable-workflow.yml
     with:
       artifact-name: build-files
