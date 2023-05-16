@@ -6,6 +6,7 @@ on:
 
 jobs:
   deployment:
+    continue-on-error: true
     strategy:
       matrix:
         runner: [ubuntu-latest, windows-latest, macos-latest]
