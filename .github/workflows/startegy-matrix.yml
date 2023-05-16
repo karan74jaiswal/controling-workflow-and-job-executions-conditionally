@@ -16,6 +16,7 @@ jobs:
             node_version: 16
         exclude:
           - node_version: 12
+          - runner: macos-latest
 
     runs-on: ${{matrix.runner}}
     steps:
