@@ -43,6 +43,8 @@ jobs:
         with:
           name: build-files
           path: dist
+      - name: Using Reusable Workflow in steps
+        uses: ./.github/workflows/reusable-workflow.yml
 
-  reusableWorkflow:
-    uses: ./.github/workflows/reusable-workflow.yml
+  # reusableWorkflow:
+  #   uses: ./.github/workflows/reusable-workflow.yml
