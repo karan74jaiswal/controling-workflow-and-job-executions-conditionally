@@ -47,3 +47,5 @@ jobs:
   reusableWorkflow:
     needs: deployment
     uses: ./.github/workflows/reusable-workflow.yml
+    with:
+      artifact-name: build-files
