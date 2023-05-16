@@ -45,4 +45,5 @@ jobs:
           path: dist
 
   reusableWorkflow:
+    needs: deployment
     uses: ./.github/workflows/reusable-workflow.yml
