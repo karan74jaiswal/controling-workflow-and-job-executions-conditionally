@@ -1,8 +1,11 @@
 name: Website Deployment
 on:
-  push:
-    branches:
-      - main
+  workflow_call:
+    inputs:
+      artifact-name:
+        required: false
+        default: dist
+        type: string
 jobs:
   lint:
     runs-on: ubuntu-latest
